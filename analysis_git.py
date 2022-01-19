@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-Created on Sun Jan 16 20:52:19 2022
-
+main analysis script
 @author: akhilesh.koul
 """
 

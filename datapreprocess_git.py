@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-Created on Mon Jan 17 13:28:12 2022
-
+Data pre-processing script
 @author: akhilesh.koul
 """
 import glob
