@@ -1,0 +1,702 @@
+[
+	{
+		"FIELD NAME": "ACCIDENT_DATE",
+		"FIELD TYPE": "Text",
+		"FIELD WIDTH": 255,
+		"FIELD DEFINITION": "Accident Date",
+		"FIELD DOMAIN": "dd/mm/yyyy. (e.g.: 10 July 1995 = 10/07/1995)"
+	},
+	{
+		"FIELD NAME": "ACCIDENT_TIME",
+		"FIELD TYPE": "Text",
+		"FIELD WIDTH": 255,
+		"FIELD DEFINITION": "Accident Time",
+		"FIELD DOMAIN": "hh.mm.ss"
+	},
+	{
+		"FIELD NAME": "STAT_DIV_NAME",
+		"FIELD TYPE": "Text",
+		"FIELD WIDTH": 40,
+		"FIELD DEFINITION": "STAT_DIV_NAME is a character field indicating the Metro Melbourne or Country region where the crash occurred.",
+		"FIELD DOMAIN": "Metro, Country."
+	},
+	{
+		"FIELD NAME": "ACCIDENT_NO",
+		"FIELD TYPE": "Text",
+		"FIELD WIDTH": 12,
+		"FIELD DEFINITION": "From November 2005 the accident number field was changed to be 12 character field, starting with T (for example, T20060123456)\r\nWhere characters 2 to 5 are the year in which accident was registered;\r\nWhere characters 6 to 12 are a numeric sequencing numbers",
+		"FIELD DOMAIN": "Example: 12001012345, T20060006259"
+	},
+	{
+		"FIELD NAME": "ACCIDENTDATE",
+		"FIELD TYPE": "Date",
+		"FIELD WIDTH": "",
+		"FIELD DEFINITION": "Date of accident. Australian format DD/MM/YYYY",
+		"FIELD DOMAIN": "(e.g.: 10 July 1995 = 10/07/1995)"
+	},
+	{
+		"FIELD NAME": "ACCIDENTTIME",
+		"FIELD TYPE": "Text",
+		"FIELD WIDTH": 225,
+		"FIELD DEFINITION": "hh.mm.ss. Original date stored in 24 hour format (ie 1pm = 1300 hours)\r\nNote the common practice used by the Police, when originally coding up the accident details, of 'rounding off the time' to the nearest 5 minutes or even nearest hour. This naturally occurs because in the vast majority of accidents police arrive at the scene well after the accident occurred and so the 'REAL' time of the accident is never precisely known.",
+		"FIELD DOMAIN": "Examples of various PC time formats:\r\n24 Hour format 2:35:00 PM = 14:35\r\nor 12 Hour format 2:35:00 PM = 02:35PM\r\n9999 Unknown time midnight = 00:00"
+	},
+	{
+		"FIELD NAME": "ACCIDENT_TYPE",
+		"FIELD TYPE": "Number",
+		"FIELD WIDTH": "",
+		"FIELD DEFINITION": "the type of accident. It is a basic description of what occurred, based on nine categories.",
+		"FIELD DOMAIN": "1 Collision with vehicle\r\n2 Struck pedestrian\r\n3 Struck animal\r\n4 Collision with a fixed object\r\n5 Collision with some other object\r\n6 Vehicle overturned (no collision)\r\n7 Fall from or in moving vehicle\r\n8 No collision and no object struck\r\n9 Other accident"
+	},
+	{
+		"FIELD NAME": "DAY_OF_WEEK",
+		"FIELD TYPE": "Number",
+		"FIELD WIDTH": "",
+		"FIELD DEFINITION": "the day of the week upon which the accident occurred",
+		"FIELD DOMAIN": "1 Sunday\r\n2 Monday\r\n3 Tuesday\r\n4 Wednesday\r\n5 Thursday\r\n6 Friday\r\n7 Saturday"
+	},
+	{
+		"FIELD NAME": "DCA_CODE Part 1",
+		"FIELD TYPE": "Text",
+		"FIELD WIDTH": 3,
+		"FIELD DEFINITION": "the Definitions for Classifying Accidents",
+		"FIELD DOMAIN": "Code\tDescription\r\n100\tPedestrian near side hit by vehicle from the right\r\n101\tPedestrian emerges from in front of parked or stationary vehicle\r\n102\tPedestrian far side hit by vehicle from the left\r\n103\tPedestrian playing, lying, working, standing on carriageway.\r\n104\tPedestrian walking with traffic\r\n105\tPedestrian walking against traffic.\r\n106\tVehicle strikes pedestrian on footpath, median, traffic island\r\n107\tPedestrian on footpath struck by vehicle entering/leaving driveway\r\n108\tPedestrian struck walking to/from or boarding/alighting vehicle\r\n109\tAny manoeuvre involving Pedestrian not included in DCAs 100-108.\r\n110\tCross traffic (intersections only)\r\n111\tRight far (intersections only)\r\n112\tLeft far (intersections only)\r\n113\tRight near (intersections only)\r\n114\tTwo right turning (intersections only)\r\n115\tRight/left far (intersections only)\r\n116\tLeft near (intersections only)\r\n117\tLeft/right far (intersections only)\r\n118\tTwo left turning (intersections only)\r\n119\tOther adjacent (intersections only)\r\n120\tHead on (not overtaking)\r\n121\tRight through\r\n122\tLeft through\r\n123\tRight/left (one vehicle turning right the other left)\r\n124\tRight/right (both vehicles from opposite directions turning right)\r\n125\tLeft/left (both vehicles from opposite directions turning right)\r\n129\tOther opposing (manoeuvres not included in DCAS 120 125)\r\n130\tRear end (vehicles in same lane)\r\n131\tLeft rear\r\n132\tRight rear\r\n133\tLane side swipe (vehicles in parallel lanes)\r\n134\tLane change right (not overtaking)\r\n135\tLane change left (not overtaking)\r\n136\tRight turn sideswipe\r\n137\tLeft turn sideswipe\r\n139\tOther same direction (manoeuvres not included in DCAs 130-137)\r\n140\tU turn"
+	},
+	{
+		"FIELD NAME": "LIGHT_CONDITION",
+		"FIELD TYPE": "Number",
+		"FIELD WIDTH": "",
+		"FIELD DEFINITION": "the light condition or level of brightness at the time of the accident.",
+		"FIELD DOMAIN": "Description\r\n1 Day\r\n2 Dusk/dawn\r\n3 Dark street lights on\r\n4 Dark street lights off\r\n5 Dark no street lights\r\n6 Dark street lights unknown\r\n9 Unknown"
+	},
+	{
+		"FIELD NAME": "NO_PERSONS",
+		"FIELD TYPE": "Number",
+		"FIELD WIDTH": 4,
+		"FIELD DEFINITION": "the number of people involved in the accident",
+		"FIELD DOMAIN": ""
+	},
+	{
+		"FIELD NAME": "NO_PERSONS_KILLED",
+		"FIELD TYPE": "Number",
+		"FIELD WIDTH": 4,
+		"FIELD DEFINITION": "Number of people with a given injury level",
+		"FIELD DOMAIN": ""
+	},
+	{
+		"FIELD NAME": "NO_PERSONS_INJ_2",
+		"FIELD TYPE": "Number",
+		"FIELD WIDTH": 4,
+		"FIELD DEFINITION": "Number of people with a given injury level",
+		"FIELD DOMAIN": ""
+	},
+	{
+		"FIELD NAME": "DCA_CODE Part 2",
+		"FIELD TYPE": "Text",
+		"FIELD WIDTH": 3,
+		"FIELD DEFINITION": "Link to DCA Chart https://vicroads-public.sharepoint.com/InformationAccess/Shared%20Documents/Road%20Safety/Crash/Accident/DCA_Chart_and_Sub_DCA_Codes.PDF",
+		"FIELD DOMAIN": "Code\tDescription\r\n141\tU turn into fixed object/parked vehicle\r\n142\tLeaving parking\r\n143\tEntering parking\r\n144\tParked vehicles only\r\n145\tReversing in stream of traffic\r\n146\tReversing into fixed object/parked vehicle\r\n147\tVehicle strikes another vehicle while emerging from driveway\r\n148\tVehicle off footpath strikes vehicle on carriageway\r\n149\tOther (manoeuvres not included in DCAs 140 148)\r\n150\tHead on (overtaking)\r\n151\tOut of control (overtaking)\r\n152\tPulling out (overtaking)\r\n153\tCutting in (overtaking)\r\n154\tPulling out rear end\r\n159\tOther overtaking (manoeuvres not included in DCAs 150 154)\r\n160\tVehicle collides with vehicle parked on left of road\r\n161\tDouble parked\r\n162\tAccident or broken down\r\n163\tVehicle strikes door of parked/stationary vehicle\r\n164\tPermanent obstruction on carriageway\r\n165\tTemporary roadworks\r\n166\tStruck object on carriageway\r\n167\tStruck animal\r\n169\tOther on path\r\n170\tOff carriageway to left\r\n171\tLeft off carriageway into object/parked vehicle\r\n172\tOff carriageway to right\r\n173\tRight off carriageway into object/parked vehicle\r\n174\tOut of control on carriageway (on straight)\r\n175\tOff end of road/T intersection\r\n179\tOther accidents off straight not included in DCAs 170 175\r\n180\tOff carriageway on right bend\r\n181\tOff right bend into object/parked vehicle\r\n182\tOff carriageway on left bend\r\n183\tOff left bend into object/parked vehicle\r\n184\tOut of control on carriageway (on bend)\r\n189\tOther accidents on curve not included in DCAs 180 184\r\n190\tFell in/from vehicle\r\n191\tLoad or missile struck vehicle\r\n192\tStruck train\r\n193\tStruck railway crossing furniture\r\n194\tParked car run away\r\n198\tOther accidents not classifiable elsewhere\r\n199\tUnknown no details on manoeuvres of road users in accident\r\n775\tRUN OFF ROAD + SOME HEAD ONS\r\n777\tSPEEDING DCA GROUP FOR POLICE\r\n778\tPedestrian DCAs\r\n779\tCross - Rears Cross traffic rear ends\r\n780\tRun Off Road DCAs 170 - 184\r\n781\tR Taylor (TAC)"
+	},
+	{
+		"FIELD NAME": "NO_PERSONS_INJ_3",
+		"FIELD TYPE": "Number",
+		"FIELD WIDTH": 4,
+		"FIELD DEFINITION": "Number of people with a given injury level",
+		"FIELD DOMAIN": ""
+	},
+	{
+		"FIELD NAME": "NO_PERSONS_NOT_INJ",
+		"FIELD TYPE": "Number",
+		"FIELD WIDTH": 4,
+		"FIELD DEFINITION": "the number of people that were not injured in the accident",
+		"FIELD DOMAIN": ""
+	},
+	{
+		"FIELD NAME": "NO_OF_VEHICLES",
+		"FIELD TYPE": "Number",
+		"FIELD WIDTH": 4,
+		"FIELD DEFINITION": "the number of vehicles involved in the accident.\r\nIncludes bicycles but not objects, property, toys (skate boards), etc.",
+		"FIELD DOMAIN": ""
+	},
+	{
+		"FIELD NAME": "POLICE_ATTEND",
+		"FIELD TYPE": "Number",
+		"FIELD WIDTH": "",
+		"FIELD DEFINITION": "Whether or not the police attended the scene of the accident.",
+		"FIELD DOMAIN": "Code Description\r\n1 Yes\r\n2 No\r\n9 Not known"
+	},
+	{
+		"FIELD NAME": "ROAD_GEOMETRY",
+		"FIELD TYPE": "Number",
+		"FIELD WIDTH": "",
+		"FIELD DEFINITION": "The layout of the road where the accident occurred",
+		"FIELD DOMAIN": "Code Description\r\n1 Cross intersection\r\n2 'T' Intersection\r\n3 'Y' Intersection\r\n4 Multiple intersections\r\n5 Not at intersection\r\n6 Dead end\r\n7 Road closure\r\n8 Private property\r\n9 Unknown"
+	},
+	{
+		"FIELD NAME": "SEVERITY",
+		"FIELD TYPE": "Text",
+		"FIELD WIDTH": "",
+		"FIELD DEFINITION": "VicRoads estimation of the severity or seriousness of the accident",
+		"FIELD DOMAIN": "1 Fatal accident\r\n2 Serious injury accident\r\n3 Other injury accident\r\n4 Non injury accident"
+	},
+	{
+		"FIELD NAME": "DIRECTORY",
+		"FIELD TYPE": "Text",
+		"FIELD WIDTH": "",
+		"FIELD DEFINITION": "indicates the name of the street directory used to provide a map reference for the accident.",
+		"FIELD DOMAIN": "MEL\tMelway directory\r\nVCD\tVic Roads directory"
+	},
+	{
+		"FIELD NAME": "EDITION",
+		"FIELD TYPE": "Text",
+		"FIELD WIDTH": 70,
+		"FIELD DEFINITION": "the edition or version of the street directory used to provide a map reference for the accident",
+		"FIELD DOMAIN": "MEL\tMelway directory\r\nVCD\tVic Roads directory\r\ne.g. ED30"
+	},
+	{
+		"FIELD NAME": "PAGE",
+		"FIELD TYPE": "Text",
+		"FIELD WIDTH": 70,
+		"FIELD DEFINITION": "the page number of the street directory used to provide a map reference for the accident",
+		"FIELD DOMAIN": "MEL\tMelway directory\r\nVCD\tVic Roads directory\r\ne.g. 91A"
+	},
+	{
+		"FIELD NAME": "GRID_REFERENCE_X",
+		"FIELD TYPE": "Text",
+		"FIELD WIDTH": 70,
+		"FIELD DEFINITION": "the grid reference in the x direction of the cell in the street directory used to provide a map reference for the accident.",
+		"FIELD DOMAIN": ""
+	},
+	{
+		"FIELD NAME": "GRID_REFERENCE_X",
+		"FIELD TYPE": "Text",
+		"FIELD WIDTH": 70,
+		"FIELD DEFINITION": "the grid reference in the y direction of the cell in the street directory used to provide a map reference for the accident.",
+		"FIELD DOMAIN": ""
+	},
+	{
+		"FIELD NAME": "SPEED_ZONE",
+		"FIELD TYPE": "Text",
+		"FIELD WIDTH": 3,
+		"FIELD DEFINITION": "the speed zone at the location of the accident. The speed zone is generally assigned to the main vehicle involved.",
+		"FIELD DOMAIN": "040 40 km/hr\r\n050 50 km/hr\r\n060 60 km/hr\r\n075 75 km/hr\r\n080 80 km/hr\r\n090 90 km/hr\r\n100 100 km/hr\r\n110 110 km/hr\r\n777 Other speed limit\r\n888 Camping grounds, off road\r\n999 Not known"
+	},
+	{
+		"FIELD NAME": "NODE_ID",
+		"FIELD TYPE": "Text",
+		"FIELD WIDTH": 70,
+		"FIELD DEFINITION": "The node id of the accident.\r\nIt starts with 1 and incremented by one when a new accident location is indentified.",
+		"FIELD DOMAIN": "e.g. 43078"
+	},
+	{
+		"FIELD NAME": "EVENT_SEQ_NO",
+		"FIELD TYPE": "Number",
+		"FIELD WIDTH": 4,
+		"FIELD DEFINITION": "It starts with 1 and incremented for more than one event in the same accident.",
+		"FIELD DOMAIN": ""
+	},
+	{
+		"FIELD NAME": "EVENT_TYPE",
+		"FIELD TYPE": "Text",
+		"FIELD WIDTH": 1,
+		"FIELD DEFINITION": "type of incident event",
+		"FIELD DOMAIN": "0 Not applicable\r\n1 Rollover on/off carriageway\r\n2 Fell from vehicle\r\n3 Ran off carriageway\r\n4 Mechanical failure\r\n5 Struck by stone/projectile/load\r\n6 Fell in vehicle\r\n8 Other\r\n9 Not known\r\nC Collision"
+	},
+	{
+		"FIELD NAME": "VEHICLE_1_ID",
+		"FIELD TYPE": "Text",
+		"FIELD WIDTH": 1,
+		"FIELD DEFINITION": "first vehicle involved in the event",
+		"FIELD DOMAIN": ""
+	},
+	{
+		"FIELD NAME": "VEHICLE_1_COLL_PT",
+		"FIELD TYPE": "Text",
+		"FIELD WIDTH": 1,
+		"FIELD DEFINITION": "collision point on the vehicle.",
+		"FIELD DOMAIN": "0\tTowed unit\r\n1\tRight front corner\r\n2\tRight side (forwards)\r\n3\tRight side (rearwards)\r\n4\tRight rear corner\r\n5\tLeft front corner\r\n6\tLeft side (forwards)\r\n7\tLeft side (rearwards)\r\n8\tLeft rear corner\r\n9\tNot known or Not Applicable\r\nF Front\r\nN None\r\nR Rear\r\nS Sidecar\r\nT Top/Roof\r\nU\tUndercarriage"
+	},
+	{
+		"FIELD NAME": "VEHICLE_2_ID",
+		"FIELD TYPE": "Text",
+		"FIELD WIDTH": 1,
+		"FIELD DEFINITION": "second vehicle involved in the event.",
+		"FIELD DOMAIN": ""
+	},
+	{
+		"FIELD NAME": "VEHICLE_2_COLL_PT",
+		"FIELD TYPE": "Text",
+		"FIELD WIDTH": 1,
+		"FIELD DEFINITION": "collision point on the vehicle.",
+		"FIELD DOMAIN": "0\tTowed unit\r\n1\tRight front corner\r\n2\tRight side (forwards)\r\n3\tRight side (rearwards)\r\n4\tRight rear corner\r\n5\tLeft front corner\r\n6\tLeft side (forwards)\r\n7\tLeft side (rearwards)\r\n8\tLeft rear corner\r\n9\tNot known or Not Applicable\r\nF Front\r\nN None\r\nR Rear\r\nS Sidecar\r\nT Top/Roof\r\nU\tUndercarriage"
+	},
+	{
+		"FIELD NAME": "PERSON_ID",
+		"FIELD TYPE": "Text",
+		"FIELD WIDTH": 2,
+		"FIELD DEFINITION": "person involved in the specific accident event",
+		"FIELD DOMAIN": ""
+	},
+	{
+		"FIELD NAME": "OBJECT_TYPE",
+		"FIELD TYPE": "Text",
+		"FIELD WIDTH": 2,
+		"FIELD DEFINITION": "object involved in the specific accident event",
+		"FIELD DOMAIN": "1\tPole (telephone/electricity)\r\n2\tTree (shrub/scrub)\r\n3\tFence/Wall (including gates)\r\n17\tTraffic island"
+	},
+	{
+		"FIELD NAME": "COMPLEX_INT_NO",
+		"FIELD TYPE": "Number",
+		"FIELD WIDTH": 4,
+		"FIELD DEFINITION": "the segment is part of a complex intersection. If accident is located in complex intersection, the field has non zero value.",
+		"FIELD DOMAIN": "0\tNot part of a complex intersection\r\n1-n Valid complex intersection number"
+	},
+	{
+		"FIELD NAME": "ROAD_ROUTE_1",
+		"FIELD TYPE": "Number",
+		"FIELD WIDTH": 4,
+		"FIELD DEFINITION": "This is the primary road/route number for road_name_1.",
+		"FIELD DOMAIN": "Group Classifications are:\r\n2000-2999 Freeways or Highways\r\n3000-3999 Forest Rds\r\n4000-4999 Tourist Rds\r\n5000-5999 Main Rds\r\n7000-7999 Ramps (mainly Freeway ramps) 9999 Unclassified Roads e.g. Council / ‟Local‟ roads"
+	},
+	{
+		"FIELD NAME": "ROAD_NAME",
+		"FIELD TYPE": "Text",
+		"FIELD WIDTH": 45,
+		"FIELD DEFINITION": "highest priority road at intersection OR road on which accident took place.",
+		"FIELD DOMAIN": ""
+	},
+	{
+		"FIELD NAME": "ROAD_TYPE",
+		"FIELD TYPE": "Text",
+		"FIELD WIDTH": 15,
+		"FIELD DEFINITION": "type of Road_Name",
+		"FIELD DOMAIN": ""
+	},
+	{
+		"FIELD NAME": "ROAD_NAME_INT",
+		"FIELD TYPE": "Text",
+		"FIELD WIDTH": 45,
+		"FIELD DEFINITION": "the primary name of the intersecting road",
+		"FIELD DOMAIN": ""
+	},
+	{
+		"FIELD NAME": "ROAD_TYPE_INT",
+		"FIELD TYPE": "Text",
+		"FIELD WIDTH": 15,
+		"FIELD DEFINITION": "the type or suffix of the intersecting road",
+		"FIELD DOMAIN": ""
+	},
+	{
+		"FIELD NAME": "DISTANCE_LOCATION",
+		"FIELD TYPE": "Number",
+		"FIELD WIDTH": 4,
+		"FIELD DEFINITION": "the distance (in metres) of the accident from the nearest intersecting road (if the crash is a non-intersection or mid-block accident).",
+		"FIELD DOMAIN": "Eg: 153"
+	},
+	{
+		"FIELD NAME": "DIRECTION_LOCATION",
+		"FIELD TYPE": "Text",
+		"FIELD WIDTH": 2,
+		"FIELD DEFINITION": "the direction of the accident from the nearest intersecting road (if the crash is a non-intersection or mid-block accident)",
+		"FIELD DOMAIN": "Code\tDescription\r\nN\tNorth\r\nNE\tNorth East\r\nE\tEast\r\nSE\tSouth East\r\nS\tSouth\r\nSW\tSouth West\r\nW\tWest\r\nNW\tNorth West\r\nUK\tNot known"
+	},
+	{
+		"FIELD NAME": "NEAREST_KM_POST",
+		"FIELD TYPE": "Number",
+		"FIELD WIDTH": 4,
+		"FIELD DEFINITION": "the distance (in metres) of the accident to the nearest or closest kilometre post",
+		"FIELD DOMAIN": ""
+	},
+	{
+		"FIELD NAME": "NEAREST_KM_POST",
+		"FIELD TYPE": "Number",
+		"FIELD WIDTH": 4,
+		"FIELD DEFINITION": "the distance (in metres) of the accident to the nearest or closest kilometre post",
+		"FIELD DOMAIN": ""
+	},
+	{
+		"FIELD NAME": "OFF_ROAD_LOCATION",
+		"FIELD TYPE": "Text",
+		"FIELD WIDTH": 40,
+		"FIELD DEFINITION": "the name of the closest landmark or marker to the accident",
+		"FIELD DOMAIN": ""
+	},
+	{
+		"FIELD NAME": "ATMOSPH_COND",
+		"FIELD TYPE": "Text",
+		"FIELD WIDTH": 1,
+		"FIELD DEFINITION": "atmospheric condition",
+		"FIELD DOMAIN": "CODE\tDESCRIPTION\r\n1\tClear\r\n2\tRaining\r\n3\tSnowing\r\n4\tFog\r\n5\tSmoke\r\n6\tDust\r\n7\tStrong winds\r\n9\tNot known"
+	},
+	{
+		"FIELD NAME": "ATMOSPH_COND_SEQ",
+		"FIELD TYPE": "Number",
+		"FIELD WIDTH": 4,
+		"FIELD DEFINITION": "1 and incremented by 1 if more than one atmospheric condition is entered for the same incident",
+		"FIELD DOMAIN": ""
+	},
+	{
+		"FIELD NAME": "LONGITUDE",
+		"FIELD TYPE": "Double",
+		"FIELD WIDTH": 8,
+		"FIELD DEFINITION": "Geographical coordinates",
+		"FIELD DOMAIN": ""
+	},
+	{
+		"FIELD NAME": "LATITUDE",
+		"FIELD TYPE": "Double",
+		"FIELD WIDTH": 8,
+		"FIELD DEFINITION": "Geographical coordinates",
+		"FIELD DOMAIN": ""
+	},
+	{
+		"FIELD NAME": "NODE_TYPE",
+		"FIELD TYPE": "Number",
+		"FIELD WIDTH": 1,
+		"FIELD DEFINITION": "location type identified by the RCIS spatial system",
+		"FIELD DOMAIN": "Code\tDescription\r\nI\tIntersection\r\nN\tNon-Intersection\r\nO\tOff Road\r\nU\tUnknown"
+	},
+	{
+		"FIELD NAME": "AMG_X",
+		"FIELD TYPE": "Double",
+		"FIELD WIDTH": 8,
+		"FIELD DEFINITION": "AMG coordinate X value.\r\nWith the emergence of digital mapping (mid 1980‟s), the (then) Lands Department of Victoria defined a projection which would allow Victoria to be viewed as a single, continuous map coverage, rather than as multiple zones. This projection, known in VicRoads as Pseudo AMG, is based on AGD 66, but uses a UTM modified to have scale distortion of 1.0 at its centre, a centre based on 145 degrees longitude (Melbourne) and a single zone covering the whole state.",
+		"FIELD DOMAIN": "e.g. 2519154.655"
+	},
+	{
+		"FIELD NAME": "AMG_Y",
+		"FIELD TYPE": "Double",
+		"FIELD WIDTH": 8,
+		"FIELD DEFINITION": "AMG coordinate Y value.\r\nWith the emergence of digital mapping (mid 1980‟s), the (then) Lands Department of Victoria defined a projection which would allow Victoria to be viewed as a single, continuous map coverage, rather than as multiple zones. This projection, known in VicRoads as Pseudo AMG, is based on AGD 66, but uses a UTM modified to have scale distortion of 1.0 at its centre, a centre based on 145 degrees longitude (Melbourne) and a single zone covering the whole state.",
+		"FIELD DOMAIN": "e.g. 2390265.155"
+	},
+	{
+		"FIELD NAME": "LGA_NAME",
+		"FIELD TYPE": "Text",
+		"FIELD WIDTH": 25,
+		"FIELD DEFINITION": "the LGA name",
+		"FIELD DOMAIN": "e.g. DANDENONG"
+	},
+	{
+		"FIELD NAME": "SEX",
+		"FIELD TYPE": "Text",
+		"FIELD WIDTH": 1,
+		"FIELD DEFINITION": "the sex or gender of the person",
+		"FIELD DOMAIN": "Code\tDescription\r\nM\tMale\r\nF\tFemale\r\nU\tNot known"
+	},
+	{
+		"FIELD NAME": "AGE",
+		"FIELD TYPE": "Number",
+		"FIELD WIDTH": 4,
+		"FIELD DEFINITION": "how old the person was at the time of the accident. It is calculated by subtracting the person’s birth date from the accident date to give the person’s age in years",
+		"FIELD DOMAIN": ""
+	},
+	{
+		"FIELD NAME": "INJ_LEVEL",
+		"FIELD TYPE": "Text",
+		"FIELD WIDTH": 1,
+		"FIELD DEFINITION": "the level or degree of injury that the person has experienced as a result of the accident. It is calculated field using inj_police_level and taken_hospital",
+		"FIELD DOMAIN": "Code\tDescription\r\n1\tFatality\r\n2\tSerious injury\r\n3\tOther injury\r\n4\tNot injured"
+	},
+	{
+		"FIELD NAME": "SEATING_POSITION",
+		"FIELD TYPE": "Text",
+		"FIELD WIDTH": 2,
+		"FIELD DEFINITION": "where the person was located on the vehicle",
+		"FIELD DOMAIN": "Code\tDescription\r\nCF\tCentre-front\r\nCR\tCentre-rear\r\nD\tDriver or rider\r\nLF\tLeft-front\r\nLR\tLeft-rear\r\nNA\tNot applicable\r\nNK\tNot known\r\nOR\tOther-rear\r\nPL\tPillion passenger\r\nPS\tMotorcycle sidecar passenger\r\nRR\tRight-rear"
+	},
+	{
+		"FIELD NAME": "HELMET_BELT_WORN",
+		"FIELD TYPE": "Text",
+		"FIELD WIDTH": 1,
+		"FIELD DEFINITION": "whether or not the person was wearing a helmet or seatbelt at the time of the accident",
+		"FIELD DOMAIN": "Code\tDescription\r\n1\tSeatbelt worn\r\n2\tSeatbelt not worn\r\n3\tChild restraint worn\r\n4\tChild restraint not worn\r\n5\tSeatbelt/restraint not fitted\r\n6\tCrash helmet worn\r\n7\tCrash helmet not worn\r\n8\tNot appropriate\r\n9\tNot known"
+	},
+	{
+		"FIELD NAME": "ROAD_USER_TYPE",
+		"FIELD TYPE": "Text",
+		"FIELD WIDTH": 2,
+		"FIELD DEFINITION": "the role of the person was at the time of the accident. It is calculated field using person_status and vehicle_type from vehicle table",
+		"FIELD DOMAIN": "Code\tDescription\r\n1\tPedestrian\r\n2\tDriver (of V-type 1-9 17 60-63 70-71)\r\n3\tPassenger (of V-type 1-9 17 60-63 70-71)\r\n4\tMotorcyclist\r\n5\tPillion Passenger\r\n6\tBicyclist (incl. passengers)\r\n7\tOther driver (V-type 14-16 99)\r\n8\tOther passenger (V-type 14-16 99)\r\n9\tNot known"
+	},
+	{
+		"FIELD NAME": "LICENCE_STATE",
+		"FIELD TYPE": "Text",
+		"FIELD WIDTH": 1,
+		"FIELD DEFINITION": "the state of issue of the person’s driver license",
+		"FIELD DOMAIN": "A\tAustralian Capital Territory\r\nB\tCommonwealth\r\nD\tNorthern Territory\r\nN\tNew South Wales\r\nO\tOverseas\r\nQ\tQueensland\r\nS\tSouth Australia\r\nT\tTasmania\r\nV\tVictoria\r\nW\tWestern Australia\r\nZ\tNot known\r\n_\tNot available (Blank value entered)"
+	},
+	{
+		"FIELD NAME": "PEDEST_MOVEMENT",
+		"FIELD TYPE": "Text",
+		"FIELD WIDTH": 1,
+		"FIELD DEFINITION": "indicates the movement or travel of the person, if classified as a pedestrian",
+		"FIELD DOMAIN": "Code\tDescription\r\n0\tNot applicable\r\n1\tCrossing carriageway\r\n2\tWorking/playing/lying or standing on carriageway\r\n3\tWalking on carriageway with traffic\r\n4\tWalking on carriageway against traffic\r\n5\tPushing or working on vehicle\r\n6\tWalking to/from or boarding tram\r\n7\tWalking to/from or boarding other vehicle\r\n8\tNot on carriageway (e.g. footpath)\r\n9\tNot known"
+	},
+	{
+		"FIELD NAME": "POSTCODE",
+		"FIELD TYPE": "Number",
+		"FIELD WIDTH": 4,
+		"FIELD DEFINITION": "the postcode where the owner of the vehicle resides",
+		"FIELD DOMAIN": ""
+	},
+	{
+		"FIELD NAME": "TAKEN_HOSPITAL",
+		"FIELD TYPE": "Text",
+		"FIELD WIDTH": 1,
+		"FIELD DEFINITION": "whether or not the person was taken to hospital",
+		"FIELD DOMAIN": "Y\tYes\r\nN\tNo\r\n_\tNot Known"
+	},
+	{
+		"FIELD NAME": "EJECTED_CODE",
+		"FIELD TYPE": "Text",
+		"FIELD WIDTH": 1,
+		"FIELD DEFINITION": "whether or not the person was ejected or thrown out of the vehicle",
+		"FIELD DOMAIN": "Code\tDescription\r\n0\tNot applicable\r\n1\tTotal ejected\r\n2\tPartially ejected\r\n3\tPartial ejection involving extraction\r\n_\tNot known"
+	},
+	{
+		"FIELD NAME": "SURFACE_COND",
+		"FIELD TYPE": "Text",
+		"FIELD WIDTH": 1,
+		"FIELD DEFINITION": "road surface condition",
+		"FIELD DOMAIN": "Code\tDescription\r\n1\tDry\r\n2\tWet\r\n3\tMuddy\r\n4\tSnowy\r\n5\tIcy\r\n9\tUnknown"
+	},
+	{
+		"FIELD NAME": "SURFACE_COND_SEQ",
+		"FIELD TYPE": "Number",
+		"FIELD WIDTH": 4,
+		"FIELD DEFINITION": "starts with 1 and incremented by 1 if more than one road surface condition is entered for the same incident.",
+		"FIELD DOMAIN": ""
+	},
+	{
+		"FIELD NAME": "SUB_DCA_CODE",
+		"FIELD TYPE": "Text",
+		"FIELD WIDTH": 3,
+		"FIELD DEFINITION": "SUB_DCA code of the accident. Link to DCA Chart and Sub DCA Codes\r\nhttps://vicroads-public.sharepoint.com/InformationAccess/Shared%20Documents/Road%20Safety/Crash/Accident/DCA_Chart_and_Sub_DCA_Codes.PDF",
+		"FIELD DOMAIN": "A01 Vehicle entering intersection A02 Vehicle leaving intersection A03 Vehicle within intersection A04 Vehicle in left turn slip lane B01 Vehicle going straight through B02 Vehicle turning right B03 Vehicle turning left B04 Vehicle reversing C01 Pedestrian stepped off median strip C02 Pedestrian stepped off safety zone/tram shelter D01 Pedestrian emerged from behind car etc D02 Pedestrian emerged from behind truck D03 Pedestrian emerged from behind bus D04 Pedestrian emerged from behind tram D05 Pedestrian emerged from behind motorcycle D06 Pedestrian emerged from behind other vehicles D07 Pedestrian emerged from behind vehicle not known E01 Pedestrian playing E02 Pedestrian walking E03 Pedestrian lying E04 Pedestrian standing E05 Pedestrian working/pushing or working on vehicle E06 Pedestrian activity not known F01 No paved footpath F02 Paved footpath F03 Footpath unknown F04 Not on Footpath G01 Vehicle moving forward - under control G02 Vehicle moving forward - out of control G03 Vehicle moving back - under control G04 Vehicle moving back - out of control H01 Vehicle forward entering H02 Vehicle reverse entering H03 Vehicle forward departing H04 Vehicle reverse departing I01 Private driveway/laneway I02 Hotel/motel/hostel driveway or laneway I03 Factory(including loading bays) driveway/laneway I04 Commercial(includes shops/school/station) driveway I05 Not known I06 Laneway J01 Boarding J02 Alighting K01 Median K02 Other separator L01 Road straight at intersection L02 Road curved at intersection L03 Road straight at mid-block L04 Road curved at mid-block M01 Vehicle turning through median opening N01 Intersection N02 Mid-block NRQ Not Required O01 Parked vehicle causes vehicle to change lanes P01 Hit by veh from same dir as initial dir of U-turning veh P02 Hit by veh fr dir opposite to initial dir of U-turning veh Q01 Poles (telephone/electricity) Q02 Tree (shrub/scrub) Q03 Fences (including gates) Q04 Embankments Q05 Guide posts (including km/posts) Q06 Traffic signs (No parking No standing etc) Q07 Guard rail Q08 Fire hydrant Q09 Buildings Q10 Other objects (Telephone/Culvert/RX) Fixed/Not Fixed Q11 Object hit not known Q12 Traffic signals(i.e.Traffic lights) Q13 Bridge(When it is NOT on path) Q14 Barriers (Road Closure) Q17 Traffic island Q21 Bridge (When it is ON path - see 1) Q23 Roadworks (Dirt sign/barrier/excavation) Q24 Safety zone (i.e. Tram safety zone) Q30 Protruding kerb Q31 Animals - Domestic (Cats and Dogs) Q32 Animals - Cattle Q33 Animals - Sheep Q34 Animals - Horse (not ridden) Q35 Animals - Other tame animals Q36 Animals - Kangaroo or Wallaby Q37 Animals - Wombat Q38 Animals - Other wild animal or bird Q39 Unknown animals R01 Kerb parking - angle R02 Kerb parking - parallel R03 Centre of road parking - angle R04 Centre of road parking - parallel R05 Parking offroad/footpath S01 Collision on first half of carriageway S02 Collision on second half of carriageway S03 On footpath U01 Opposing direction vehicle present V01 No vehicle mounted/struck V02 Kerb(roadside) mounted/struck V03 Traffic island mounted/struck V04 Safety zone mounted/struck V05 Median mounted/struck V06 Separation mounted/struck V07 Roundabout mounted/struck W01 Leaves carriageway to left W02 Leaves carriageway to right X01 Fell in vehicle X02 Fell from vehicle Y01 Any vehicle (include trailer or parked car) Z01 On freeway (between interchanges) Z02 At entrance ramp/local road intersection Z03 On entrance ramp Z04 At entrance ramp/freeway Z05 At freeway/exit ramp (vehicle about to leave freeway) Z06 On exit ramp Z07 At exit ramp/local road intersection Z08 Freeway/freeway interchange Z09 At local rd I/S or M/B with RRP/RS spanning part of freeway"
+	},
+	{
+		"FIELD NAME": "SUB_DCA_CODE",
+		"FIELD TYPE": "Number",
+		"FIELD WIDTH": 4,
+		"FIELD DEFINITION": "starts with 1 and incremented by 1 if more than one sub_dca is entered for the same incident\r\nLink to DCA Chart and Sub DCA Codes\r\nhttps://vicroads-public.sharepoint.com/InformationAccess/Shared%20Documents/Road%20Safety/Crash/Accident/DCA_Chart_and_Sub_DCA_Codes.PDF",
+		"FIELD DOMAIN": ""
+	},
+	{
+		"FIELD NAME": "VEHICLE_YEAR_MANUF",
+		"FIELD TYPE": "Number",
+		"FIELD WIDTH": 4,
+		"FIELD DEFINITION": "indicates the year in which the vehicle was built or manufactured. The data is stored in yyyy format.",
+		"FIELD DOMAIN": ""
+	},
+	{
+		"FIELD NAME": "VEHICLE_DCA_CODE",
+		"FIELD TYPE": "Text",
+		"FIELD WIDTH": 1,
+		"FIELD DEFINITION": "links the vehicle with the movement depicted in the DCA table. For example, if the DCA code for the accident is 111 and the vehicle DCA code is 2, then an inspection of the DCA chart will show that the second vehicle involved in the accident was turning right.",
+		"FIELD DOMAIN": "Code\tDescription\r\n1\tVehicle 1\r\n2\tVehicle 2\r\n3\tNot known which vehicle was number 1\r\n8\tNot involved in initial event"
+	},
+	{
+		"FIELD NAME": "INITIAL_DIRECTION",
+		"FIELD TYPE": "Text",
+		"FIELD WIDTH": 2,
+		"FIELD DEFINITION": "the initial or first direction of travel of the vehicle. For a vehicle that is turning, the initial direction will be different to the final direction. For a non-turning vehicle, the initial direction will be the same as the final direction.",
+		"FIELD DOMAIN": "Code\tDescription\r\nE\tEast\r\nN\tNorth\r\nNE\tNorth east\r\nNW\tNorth west\r\nS\tSouth\r\nSE\tSouth east\r\nSW\tSouth west\r\nW\tWest\r\nNK\tNot known"
+	},
+	{
+		"FIELD NAME": "ROAD_SURFACE_TYPE",
+		"FIELD TYPE": "Text",
+		"FIELD WIDTH": 1,
+		"FIELD DEFINITION": "Prior to 1990 only one road surface was stored. This value is stored with the first vehicle.\r\nRoad surface for 1990 is available for each vehicle in the collision.",
+		"FIELD DOMAIN": "Code\tDescription\r\n1\tPaved\r\n2\tUnpaved\r\n3\tGravel\r\n9\tNot known"
+	},
+	{
+		"FIELD NAME": "REG_STATE",
+		"FIELD TYPE": "Text",
+		"FIELD WIDTH": 1,
+		"FIELD DEFINITION": "the state which is the vehicle is registered in",
+		"FIELD DOMAIN": "A\tAustralian Capital Territory\r\nB\tCommonwealth\r\nD\tNorthern Territory\r\nN\tNew South Wales\r\nO\tOverseas\r\nQ\tQueensland\r\nS\tSouth Australia\r\nT\tTasmania\r\nV\tVictoria\r\nW\tWestern Australia\r\nZ\tNot known\r\n_\t(Blank value entered)/Not available"
+	},
+	{
+		"FIELD NAME": "VEHICLE_BODY_STYLE",
+		"FIELD TYPE": "Text",
+		"FIELD WIDTH": 6,
+		"FIELD DEFINITION": "the body type of the vehicle",
+		"FIELD DOMAIN": "Code\tDescription\r\nAFRAME\tA Frame\r\nAG IMP\tAgricultural Implement For Prim.Prod.\r\nAMB\tAmbulance Emergency Vehicle\r\nAMPHIB\tAmphibian Land And Water Craft\r\nAMUS\tAmusement\r\nARM V\tArmoured Vehicle\r\nB BIN\tBulk Bin\r\nB HOE\tBack Hoe\r\nB TR\tBoat Trailer\r\nB/TR\tBoat Trailer\r\nBD/PMR\tB Double Prime Mover (Feds Only)\r\nBOX\tBox Trailer\r\nBUGGY\tBuggy Beach Buggy, Golf Buggy\r\nBUS\tBus Used For Passenger Carriage\r\nC CAR\tCar Carrier Used For Car Carriage\r\nC MIX\tConcrete Mixer\r\nCARAVN\tCaravan\r\nCARVN\tMobile Caravan Self Propelled Caravan\r\nCHAIR\tMotor Chair Motorized Wheelchair\r\nCOMPAC\tCompactor\r\nCONT C\tContainer Carrier\r\nCONVRT\tConvertible Car with removable top\r\nCOUPE\tCoupe Car With 2 Doors\r\nCRANE\tMobile Crane\r\nCYCLE\tMotor Cycle\r\nDITCH\tDitch Witch\r\nDOLLY\tDolly\r\nDOZER\tBulldozer\r\nDUMPER\tDumper\r\nEDUCTR\tEductor\r\nEXCVTR\tExcavator\r\nF LIFT\tFork Lift\r\nF UNIT\tFire Unit\r\nFLOAT Moomba Float\r\nFLUSH\tFlusher\r\nFRAME\tFrame\r\nG UNIT\tGarbage Unit\r\nGRADER\tGrader\r\nH FLT\tHorse Float\r\nH/FLT\tHorse Float\r\nHEARSE\tHearse\r\nHOE\tB Hoe\r\nHOR FL\tHorse Float\r\nIND/CN\tIndividual Construction\r\nINDCON\tIndividual Construction\r\nJEEP\tJeep\r\nJINKER\tJinker\r\nL FRM\tLog Frame (Rigid)\r\nL LOAD\tLow Loader\r\nL MARK\tLine Marker\r\nLADDER\tLadder Truck\r\nLOADER\tLoader\r\nM BILL\tMobile Billboard\r\nM CCH\tMourning Coach\r\nM STDO\tMobile Studio\r\nM STND\tMobile Grandstand\r\nMACH\tMachine\r\nMACHNE\tMachine\r\nMISC\tMiscellaneous\r\nMOPED\tMotor Cycle\r\nMOWER\tMower\r\nMULTI\tMulti\r\nMULTIX\tMultix\r\nOF SHD\tOffice Shed\r\nOF/SHD\tOffice Shed\r\nOUTFIT\tMotor Cycle\r\nP CARR\tPersonnell Carrier\r\nP MVR\tPrime Mover\r\nP VAN\tPanel Van\r\nPMAMUS\tPrime Mover Amusement\r\nR AMUS\tRigid Amusement\r\nRDSTR\tRoadster Convertible with 2 seats\r\nRLINER\tRoad Liner\r\nROLLER\tRoller\r\nS AMB\tSemi Ambulance\r\nS AMRV\tSemi Armoured Vehicle\r\nS AMUS\tSemi Amusement Vehicle\r\nS BULK\tSemi Bulk Bin\r\nS CAR\tSemi Car Carrier\r\nS CONT\tSemi Container Carrier\r\nS CRVN\tSemi Mobile Caravan\r\nS DCMP\tSemi Decompression Chamber\r\nS FLSH\tSemi Flusher\r\nS FLT\tSemi Float\r\nS FRM\tSemi Frame\r\nS JINK\tSemi Timber Jinker\r\nS LOAD\tSemi Loader\r\nS MACH\tSemi Machine\r\nS SERV\tSemi Service\r\nS SPRD\tSemi Lime Spreader\r\nS SPRY\tSemi Sprayer\r\nS TANK\tSemi Tanker\r\nS TRL\tSemi Trailer\r\nS TTWR\tSemi Travel Tower\r\nS VAN\tSemi Trailer Van\r\nS WAG\tStation Wagon Car With Internal Boot\r\nSCOOP\tShovel\r\nSCOOTR\tScooter\r\nSED\tSedan - Car with external boot\r\nSEDAN\tSedan - Car with external boot\r\nSWV1 Quad Bike\r\nSWV2 4 Wheel Drive – All Terrain Vehicle"
+	},
+	{
+		"FIELD NAME": "VEHICLE_MAKE",
+		"FIELD TYPE": "Text",
+		"FIELD WIDTH": 6,
+		"FIELD DEFINITION": "the vehicle make or manufacturer",
+		"FIELD DOMAIN": "Code\tDescription\r\nAEC A E C\r\nALBION Albion\r\nALFA R Alfa Romeo\r\nALLARD Allard\r\nALLIS Allis\r\nANSAIR Ansair\r\nASI A S I\r\nASIA Asia\r\nASTON Aston Martin\r\nATHEY Athey\r\nATKINS Atkinson\r\nAUDI Audi\r\nAUSTIN Austin\r\nAUSTRL Austral\r\nB KNOX Blaw Knox\r\nBED Bedford\r\nBED IS Bedford Isuzu\r\nBELARS Belarus\r\nBENFRD Benford\r\nBENT Bentley\r\nBERL Berliet\r\nBHB B H B\r\nBMW B M W\r\nBOMBDR Bombardier\r\nBSA B S A\r\nBUICK Buick\r\nCAD Cadillac\r\nCASE Case\r\nCATPLR Caterpillar\r\nCHAMB Chamberlain\r\nCHAMP Champion\r\nCHEV Chevrolet\r\nCHRYS Chrysler\r\nCITRN Citroen\r\nCOLES Coles\r\nCOMMER Commer\r\nCONQ Conquip\r\nCUMMIN Cummins\r\nD BRN David Brown\r\nDAEWOO Daewoo\r\nDAF D A F\r\nDAIHAT Diahatsu\r\nDAIM Daimler\r\nDATSUN Datsun\r\nDENING Denning\r\nDENNIS Dennis\r\nDETOM Detomaso\r\nDEUTZ Deutz\r\nDIA R Diamond Reo\r\nDIA T Diamond T\r\nDIAMON Diamond\r\nDIATTO Diatto\r\nDODGE Dodge\r\nDOMINO  Domino\r\nDYNAPC Dynapac\r\nENFLD Enfield\r\nERF E R F\r\nESSEX Essex\r\nEUNOS Eunos500\r\nEUREKA Eureka\r\nF LINE Freightliner\r\nFENDT Fendt\r\nFERG Ferguson\r\nFERRAR Ferrari\r\nFIAT Fiat\r\nFMC F M C\r\nFORD Ford\r\nFORDSN Fordson\r\nFRANNA Franna\r\nFRGHTR Freighter-Lawton\r\nFRMLNR Farmliner\r\nFSM F S M\r\nFUJI Fuji\r\nFURUKA Furukawa\r\nGALANT Galant(Chrysler)\r\nGALION Galion\r\nGMC G M C\r\nGRAD Gradall\r\nH COCK Hancock\r\nH DAV Harley Davidson\r\nH MADE Homemade\r\nHAFL Haflinger\r\nHANOM Hanomag\r\nHILL Hillman\r\nHITACH Hitachi\r\nHOLDEN Holden\r\nHSQVRN Husqvarna\r\nHUST Hustler\r\nHYNDAI Hyundai\r\nHYSTER Hyster\r\nI RAND Ingerson Rand\r\nINTERN International\r\nISEKI Iseki\r\nISUZU Isuzu\r\nJ DEER John Deere\r\nJAGUAR Jaguar\r\nJBJ J B J\r\nJCB J C B\r\nJEEP Jeep\r\nJENSEN Jensen\r\nKATO Kato\r\nKAWASA Kawasaki\r\nKENWTH Kenworth\r\nKIA Kia\r\nL ROV Land Rover\r\nLADA Lada\r\nLOTUS Lotus\r\nMAZDA Mazda\r\nMERC B Mercedes-Benz\r\nNISSAN Nissan\r\nOLDS Oldsmobile\r\nPEUGEOT Peugeot\r\nPONT Pontiac\r\nPORSCH Porsche\r\nR ROV Range Rover\r\nRAMBLR Rambler\r\nREN Renault\r\nROLLS Rolls-Royce\r\nROVER Rover\r\nSAAB Saab\r\nSUBARU Subaru\r\nSUZUKI Suzuki\r\nTOYOTA Toyota\r\nVOLKS Volkswagen\r\nVOLVO Volvo\r\nYAMAHA Yamaha"
+	},
+	{
+		"FIELD NAME": "VEHICLE_MODEL",
+		"FIELD TYPE": "Text",
+		"FIELD WIDTH": 6,
+		"FIELD DEFINITION": "the model of the vehicle",
+		"FIELD DOMAIN": "E.g. FALCON\r\n0 Unknown\r\n66 Sleeper\r\n75 Tow"
+	},
+	{
+		"FIELD NAME": "VEHICLE_POWER",
+		"FIELD TYPE": "Number",
+		"FIELD WIDTH": 4,
+		"FIELD DEFINITION": "the power of the vehicle, in CCs or horsepower. For motor cycles, motor scooters and mopeds, the units will be CCs and for all other vehicles the units are rated horsepower.",
+		"FIELD DOMAIN": "Code\tDescription\r\n0\tUnknown\r\n1-1000\tHorsepower\r\n1-9999\tCCs"
+	},
+	{
+		"FIELD NAME": "VEHICLE_TYPE",
+		"FIELD TYPE": "Text",
+		"FIELD WIDTH": 2,
+		"FIELD DEFINITION": "the type or category of vehicle",
+		"FIELD DOMAIN": "Code\tDescription\r\n01\tCar\r\n02\tStation wagon\r\n03\tTaxi\r\n04\tUtility\r\n05\tPanel van\r\n06\tPrime Mover (No of Trailers Unknown)\r\n07\tRigid Truck (Weight Unknown)\r\n08\tBus/coach\r\n09\tMini bus (9 13) seats\r\n10\tMotor cycle\r\n11\tMoped\r\n12\tMotor scooter\r\n13\tBicycle\r\n14\tHorse (ridden or drawn )\r\n15\tTram\r\n16\tTrain\r\n17\tOther vehicle\r\n18\tNot Applicable\r\n19 Parked Trailers\r\n20 Quad Bike\r\n27 Plant machinery and Agricultural equipment\r\n60\tPrime Mover Only\r\n61\tPrime Mover – Single Trailer\r\n62\tPrime Mover – B-Double\r\n63\tPrime Mover B-Triple\r\n71\tLight Commercial Vehicle (Rigid) <= 4.5=\"\" tonnes=\"\" gvm=\"\" 72=\"\" heavy=\"\" vehicle=\"\" (rigid)=\"\"> 4.5 Tonnes\r\n99\tNot known"
+	},
+	{
+		"FIELD NAME": "VEHICLE_WEIGHT",
+		"FIELD TYPE": "Number",
+		"FIELD WIDTH": 4,
+		"FIELD DEFINITION": "the weight or mass of the vehicle. The unit of measurement is kilograms.",
+		"FIELD DOMAIN": "Code\tDescription\r\n01\tCar\r\n02\tStation wagon\r\n03\tTaxi\r\n04\tUtility\r\n05\tPanel van\r\n06\tPrime Mover (No of Trailers Unknown)\r\n07\tRigid Truck (Weight Unknown)\r\n08\tBus/coach\r\n09\tMini bus (9 13) seats\r\n10\tMotor cycle\r\n11\tMoped\r\n12\tMotor scooter\r\n13\tBicycle\r\n14\tHorse (ridden or drawn )\r\n15\tTram\r\n16\tTrain\r\n17\tOther vehicle\r\n18\tNot Applicable\r\n60\tPrime Mover Only\r\n61\tPrime Mover – Single Trailer\r\n62\tPrime Mover – B-Double\r\n63\tPrime Mover B-Triple\r\n71\tLight Commercial Vehicle (Rigid) <= 4.5=\"\" tonnes=\"\" gvm=\"\" 72=\"\" heavy=\"\" vehicle=\"\" (rigid)=\"\"> 4.5 Tonnes\r\n99\tNot known"
+	},
+	{
+		"FIELD NAME": "CONSTRUCTION_TYPE",
+		"FIELD TYPE": "Text",
+		"FIELD WIDTH": 1,
+		"FIELD DEFINITION": "the construction or formation of the vehicle",
+		"FIELD DOMAIN": "A\tArticulated\r\nP\tInterpretation is not known\r\nR\tRigid\r\n_\t(Blank value entered) Unknown"
+	},
+	{
+		"FIELD NAME": "FUEL_TYPE",
+		"FIELD TYPE": "Text",
+		"FIELD WIDTH": 1,
+		"FIELD DEFINITION": "the type of fuel used by the vehicle",
+		"FIELD DOMAIN": "Code\tDescription\r\nD\tDiesel\r\nE\tElectric\r\nG\tGas\r\nM\tMulti\r\nP\tPetrol\r\nR\tRotary\r\nZ\tUnknown"
+	},
+	{
+		"FIELD NAME": "NO_OF_WHEELS",
+		"FIELD TYPE": "Number",
+		"FIELD WIDTH": 4,
+		"FIELD DEFINITION": "the number of wheels that the vehicle has",
+		"FIELD DOMAIN": ""
+	},
+	{
+		"FIELD NAME": "NO_OF_CYLINDERS",
+		"FIELD TYPE": "Number",
+		"FIELD WIDTH": 4,
+		"FIELD DEFINITION": "the number of engine cylinders that the vehicle has",
+		"FIELD DOMAIN": ""
+	},
+	{
+		"FIELD NAME": "SEATING_CAPACITY",
+		"FIELD TYPE": "Number",
+		"FIELD WIDTH": 4,
+		"FIELD DEFINITION": "the number of seats in the vehicle",
+		"FIELD DOMAIN": ""
+	},
+	{
+		"FIELD NAME": "TARE_WEIGHT",
+		"FIELD TYPE": "Number",
+		"FIELD WIDTH": 4,
+		"FIELD DEFINITION": "the tare or unladen weight of the vehicle. The unit of measurement is kilograms",
+		"FIELD DOMAIN": ""
+	},
+	{
+		"FIELD NAME": "TOTAL_NO_OCCUPANTS",
+		"FIELD TYPE": "Number",
+		"FIELD WIDTH": 4,
+		"FIELD DEFINITION": "indicates the number of occupants or people in the vehicle at the time of the accident",
+		"FIELD DOMAIN": ""
+	},
+	{
+		"FIELD NAME": "CARRY_CAPACITY",
+		"FIELD TYPE": "Number",
+		"FIELD WIDTH": 4,
+		"FIELD DEFINITION": "the carry or load capacity of the vehicle. The unit of measurement is kilograms",
+		"FIELD DOMAIN": ""
+	},
+	{
+		"FIELD NAME": "CUBIC_CAPACITY",
+		"FIELD TYPE": "Number",
+		"FIELD WIDTH": 4,
+		"FIELD DEFINITION": "indicates the cubic capacity of the engine of the vehicle. The unit of measurement is cubic centimetres",
+		"FIELD DOMAIN": ""
+	},
+	{
+		"FIELD NAME": "FINAL_DIRECTION",
+		"FIELD TYPE": "Text",
+		"FIELD WIDTH": 2,
+		"FIELD DEFINITION": "the final or last direction of travel of the vehicle. For a vehicle that is turning, the initial direction will be different to the final direction. For a non-turning vehicle, the initial direction will be the same as the final direction",
+		"FIELD DOMAIN": "Code\tDescription\r\nE\tEast\r\nN\tNorth\r\nNE\tNorth east\r\nNW\tNorth west\r\nS\tSouth\r\nSE\tSouth east\r\nSW\tSouth west\r\nW\tWest\r\nNK\tNot known"
+	},
+	{
+		"FIELD NAME": "FINAL_DIRECTION",
+		"FIELD TYPE": "Text",
+		"FIELD WIDTH": 2,
+		"FIELD DEFINITION": "what the driver of the vehicle was attempting to undertake at the time of the accident. This information is meant to obtain via an interview of the vehicle’s driver.",
+		"FIELD DOMAIN": "Code\tDescription\r\n01\tGoing straight ahead\r\n02\tTurning right\r\n03\tTurning left\r\n04\tLeaving a driveway\r\n05\t'U' turning\r\n06\tChanging lanes\r\n07\tOvertaking\r\n08\tMerging\r\n09\tReversing\r\n10\tParking or unparking\r\n11\tParked legally\r\n12\tParked illegally\r\n13\tStationary accident\r\n14\tStationary broken down\r\n15\tOther stationary\r\n16\tAvoiding animals\r\n17\tSlow/stopping\r\n18\tOut of control\r\n19\tWrong way\r\n99\tNot known"
+	},
+	{
+		"FIELD NAME": "VEHICLE_MOVEMENT",
+		"FIELD TYPE": "Text",
+		"FIELD WIDTH": 2,
+		"FIELD DEFINITION": "the actual movement of the vehicle prior to the accident.",
+		"FIELD DOMAIN": "Code\tDescription\r\n01\tGoing straight ahead\r\n02\tTurning right\r\n03\tTurning left\r\n04\tLeaving a driveway\r\n05\t'U' turning\r\n06\tChanging lanes\r\n07\tOvertaking\r\n08\tMerging\r\n09\tReversing\r\n10\tParking or unparking\r\n11\tParked legally\r\n12\tParked illegally\r\n13\tStationary accident\r\n14\tStationary broken down\r\n15\tOther stationary\r\n16\tAvoiding animals\r\n17\tSlow/stopping\r\n18\tOut of control\r\n19\tWrong way\r\n99\tNot known\r\n_\t(Blank value entered)"
+	},
+	{
+		"FIELD NAME": "TRAILER_TYPE",
+		"FIELD TYPE": "Text",
+		"FIELD WIDTH": 1,
+		"FIELD DEFINITION": "the type of trailer towed by the vehicle involved in the accident, as reported by the police.",
+		"FIELD DOMAIN": "Code\tDescription\r\nA\tCaravan\r\nB\tTrailer (general)\r\nC\tTrailer (boat)\r\nD\tHorse float\r\nE\tMachinery\r\nF\tFarm/agricultural equipment\r\nG\tNot known what is being towed\r\nH\tNot applicable\r\nI\tTrailer (Exempt)\r\nJ\tSemi Trailer\r\nK\tPig Trailer\r\nL\tDog Trailer"
+	},
+	{
+		"FIELD NAME": "VEHICLE_COLOUR_1",
+		"FIELD TYPE": "Text",
+		"FIELD WIDTH": 3,
+		"FIELD DEFINITION": "the primary or main colour of the vehicle.",
+		"FIELD DOMAIN": "Code\tDescription\r\nBLK\tBlack\r\nBLU\tBlue\r\nBRN\tBrown\r\nCRM\tCream\r\nFWN\tFawn\r\nGLD\tGold\r\nGRN\tGreen\r\nGRY\tGrey\r\nMRN\tMaroon\r\nMVE\tMauve\r\nOGE\tOrange\r\nPNK\tPink\r\nPUR\tPurple\r\nRED\tRed\r\nSIL\tSilver\r\nWHI\tWhite\r\nYLW\tYellow\r\nZZ Unknown or Not applicable"
+	},
+	{
+		"FIELD NAME": "VEHICLE_COLOUR_1",
+		"FIELD TYPE": "Text",
+		"FIELD WIDTH": 3,
+		"FIELD DEFINITION": "the secondary colour of the vehicle",
+		"FIELD DOMAIN": "Code\tDescription\r\nBLK\tBlack\r\nBLU\tBlue\r\nBRN\tBrown\r\nCRM\tCream\r\nFWN\tFawn\r\nGLD\tGold\r\nGRN\tGreen\r\nGRY\tGrey\r\nMRN\tMaroon\r\nMVE\tMauve\r\nOGE\tOrange\r\nPNK\tPink\r\nPUR\tPurple\r\nRED\tRed\r\nSIL\tSilver\r\nWHI\tWhite\r\nYLW\tYellow\r\nZZ Unknown or Not applicable"
+	},
+	{
+		"FIELD NAME": "CAUGHT_FIRE",
+		"FIELD TYPE": "Text",
+		"FIELD WIDTH": 1,
+		"FIELD DEFINITION": "whether or not the vehicle caught fire as a result of the accident.",
+		"FIELD DOMAIN": "Code\tDescription\r\n0\tNot applicable\r\n1\tYes\r\n2\tNo\r\n9\tNot known"
+	},
+	{
+		"FIELD NAME": "INITIAL_IMPACT",
+		"FIELD TYPE": "Text",
+		"FIELD WIDTH": 1,
+		"FIELD DEFINITION": "the position on the vehicle where the initial impact occurred.",
+		"FIELD DOMAIN": "Code\tDescription\r\n0 Towed unit\r\n1 Right front corner\r\n2 Right side forwards\r\n3 Right side rearwards\r\n4 Right rear corner\r\n5 Left front corner\r\n6 Left side forwards\r\n7 Left side rearwards\r\n8 Left rear corner\r\n9 Not known/not applicable\r\nF Front\r\nN None\r\nR Rear\r\nS Sidecar\r\nT Top/roof\r\nU Undercarriage\r\n_\t(Blank value entered)"
+	},
+	{
+		"FIELD NAME": "LAMPS",
+		"FIELD TYPE": "Text",
+		"FIELD WIDTH": 1,
+		"FIELD DEFINITION": "whether the lamps or headlights for the vehicle (under the ambient lighting conditions) were alight (on).",
+		"FIELD DOMAIN": "Code\tDescription\r\n0\tNot applicable\r\n1\tYes\r\n2\tNo\r\n9\tNot known"
+	},
+	{
+		"FIELD NAME": "LEVEL_OF_DAMAGE",
+		"FIELD TYPE": "Text",
+		"FIELD WIDTH": 1,
+		"FIELD DEFINITION": "the damage level of the vehicle.",
+		"FIELD DOMAIN": "Code\tDescription\r\n1\tMinor\r\n2\tModerate (driveable vehicle)\r\n3\tModerate (unit towed away)\r\n4\tMajor (unit towed away)\r\n5\tExtensive (unrepairable)\r\n6\tNil damage\r\n9\tNot known"
+	},
+	{
+		"FIELD NAME": "OWNER_POSTCODE",
+		"FIELD TYPE": "Number",
+		"FIELD WIDTH": 4,
+		"FIELD DEFINITION": "the postcode where the owner of the vehicle resides.",
+		"FIELD DOMAIN": ""
+	}
+]
