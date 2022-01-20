@@ -19,14 +19,14 @@ import geopandas as gpd
 import pandas as pd
 import matplotlib.pyplot as plt
 import sys
-
-import seaborn as sns
-sns.set_theme()
-import requests
+import xgboost as xgb
+from sklearn.model_selection import train_test_split
+from collections import defaultdict
 from shapely.geometry import Point
-from shapely.ops import cascaded_union
-from shapely.ops import unary_union
-from matplotlib import cm
+from sklearn.preprocessing import LabelEncoder
+from sklearn.metrics import f1_score, precision_recall_fscore_support, plot_confusion_matrix, precision_score,recall_score,confusion_matrix
+
+
 
 class CrashStatAnalysis:
     
@@ -331,9 +331,70 @@ class CrashStatAnalysis:
     
     
     
-    def xgb_classifier_train(self,X_col, y_col):
-        pass;
-        return 1
+    def xgb_classifier(self,X_col =None, y_col=None):
+        """
+        This is WIP, performs very bad on test data
+
+        Parameters
+        ----------
+        X_col : TYPE, optional
+            DESCRIPTION. The default is None.
+        y_col : TYPE, optional
+            DESCRIPTION. The default is None.
+
+        Returns
+        -------
+        None.
+
+        """
+        X=pd.DataFrame()
+
+        X=self.accident_info_df[['DAY_OF_WEEK_DESC',                             'LIGHT_CONDITION_DESC','ROAD_GEOMETRY_DESC','SPEED_ZONE_DESC','ROAD_ROUTE_1','ROAD_TYPE','ROAD_TYPE_INT','ATMOSPH_COND_DESC','NODE_TYPE','LGA_NAME','SURFACE_COND_DESC','Lat', 'Long']]
+        
+        X['DATETIME_HOUR']=self.accident_info_df['ACCIDENT_DATETIME'].dt.hour
+        X['DATETIME_MONTH']=self.accident_info_df['ACCIDENT_DATETIME'].dt.month
+        # X['DATETIME_WEEK']=accident_df['ACCIDENT_DATETIME'].dt.isocalendar().week
+            
+       
+
+
+        d = defaultdict(LabelEncoder)
+        X_fit = X.apply(lambda x: d[x.name].fit_transform(x.astype(str)))
+
+        y = self.accident_info_df['SEVERITY_DESC'].copy()
+        mask=(y =='Fatal accident')
+        y.loc[mask] = 1    
+        y.loc[~mask] = 0
+      
+        ratio = float(np.sum(y == 0) / np.sum(y == 1))
+        y=y.astype(int)
+
+
+        X_train, X_test, y_train, y_test = train_test_split(X_fit, y, test_size=0.2, random_state=42,stratify=y)
+
+        X_train, X_val, y_train, y_val = train_test_split(X_train, y_train, test_size=0.2,random_state=42,stratify=y_train)
+
+
+        clf=xgb.XGBClassifier(eta= 0.3,max_depth=10,n_estimators=1000,
+                      random_state=42,scale_pos_weight=ratio)
+        clf.fit(X_train,y_train,eval_set=[(X_val, y_val)],verbose=10,early_stopping_rounds=100)
+
+
+        y_pred_test=clf.predict(X_test)
+        print('F1 Score: '+ f1_score(y_test, y_pred_test))
+        print('Precision Score: '+ precision_score(y_test, y_pred_test))
+        print('Recall Score: '+ recall_score(y_test, y_pred_test))
+        
+        cm_=confusion_matrix(y_test, y_pred_test)
+        # cm=cm/cm.astype(np.float).sum(axis=1)
+        df_cm = pd.DataFrame(cm_, range(2), range(2))
+        # plt.figure(figsize=(10,7))
+        sns.set(font_scale=1.4) # for label size
+        sns.heatmap(df_cm, annot=True, annot_kws={"size": 16}, fmt='g') # font size
+        plt.ylabel('True Label')
+        plt.xlabel('Predicted Label')
+        plt.show()
+
         
     
             
@@ -342,91 +403,37 @@ if __name__ == '__main__':
     
     #initilization
     CrashStatAnalysis=CrashStatAnalysis(csv_path='data\\ACCIDENT_CLEANED',shp_file_path='data/SHP_FILE/nov21_vic_lga_polygon_shp/vic_lga.shp')
-    
-    
-    
-    CrashStatAnalysis.eda_count_plot(df=CrashStatAnalysis.accident_info_df,field_name='SEVERITY',order=False,date_range=['2009-01-01','2020-01-01'])
-   
-   
-   
-    
-    CrashStatAnalysis.eda_count_plot(df=CrashStatAnalysis.accident_info_df,field_name='SEVERITY',hue='ROAD_GEOMETRY',order=False,date_range=['2009-01-01','2020-01-01'])
-    
-    CrashStatAnalysis.eda_count_plot(df=CrashStatAnalysis.accident_info_df,field_name='SEVERITY',hue='ATMOSPH_COND',order=False,date_range=['2009-01-01','2020-01-01'])
-    
+  
+    #eda count
     CrashStatAnalysis.eda_count_plot(df=CrashStatAnalysis.accident_info_df,field_name='SEVERITY',hue='ATMOSPH_COND',filter_list=([['SEVERITY','Fatal accident']]),order=False,date_range=['2009-01-01','2020-01-01'])
     
     
-    #eda count
-    CrashStatAnalysis.eda_count_plot(df=CrashStatAnalysis.accident_info_df,field_name='SEVERITY')
-    CrashStatAnalysis.eda_count_plot(df=CrashStatAnalysis.accident_info_df,field_name='SEVERITY',filter_list=([['SEVERITY','Fatal accident'],['ROAD_GEOMETRY','Cross intersection']]))
-    CrashStatAnalysis.eda_count_plot(df=CrashStatAnalysis.accident_info_df,field_name='SEVERITY',filter_list=([['DIRECTORY','MEL'],['ROAD_GEOMETRY','Cross intersection']]))
-    CrashStatAnalysis.eda_count_plot(df=CrashStatAnalysis.accident_info_df,field_name='SEVERITY',date_range=['2019-01-01','2019-12-01'])
-    CrashStatAnalysis.eda_count_plot(df=CrashStatAnalysis.accident_info_df,field_name='SEVERITY',date_range=['2019-01-01','2019-12-01'],hue='DAY_OF_WEEK')
-
-
-    CrashStatAnalysis.eda_count_plot(df=CrashStatAnalysis.accident_info_df,field_name='EVENT_TYPE')
-    CrashStatAnalysis.eda_count_plot(df=CrashStatAnalysis.accident_info_df,field_name='OBJECT_TYPE')
-    CrashStatAnalysis.eda_count_plot(df=CrashStatAnalysis.accident_info_df,field_name='OBJECT_TYPE',hue='EVENT_TYPE')
-
-
-
-    CrashStatAnalysis.eda_count_plot(df=CrashStatAnalysis.accident_info_df,field_name='ROAD_ROUTE_1')
-    CrashStatAnalysis.eda_count_plot(df=CrashStatAnalysis.accident_info_df,field_name='ATMOSPH_COND')
-
-
-
-    CrashStatAnalysis.eda_count_plot(df=CrashStatAnalysis.accident_info_df,field_name='NODE_TYPE')
-    CrashStatAnalysis.eda_count_plot(df=CrashStatAnalysis.accident_info_df,field_name='SURFACE_COND')
-
-
-    CrashStatAnalysis.eda_count_plot(df=CrashStatAnalysis.person_info_df,field_name='HELMET_BELT_WORN',date_range=['2019-01-01','2019-12-01'])
-    CrashStatAnalysis.eda_count_plot(df=CrashStatAnalysis.person_info_df,field_name='HELMET_BELT_WORN',hue='SEVERITY',date_range=['2019-01-01','2019-12-01'])
-        
-    CrashStatAnalysis.eda_count_plot(df=CrashStatAnalysis.vehicle_info_df,field_name='ROAD_SURFACE_TYPE',date_range=['2019-01-01','2019-12-01'])
-    CrashStatAnalysis.eda_count_plot(df=CrashStatAnalysis.vehicle_info_df,field_name='ROAD_SURFACE_TYPE',hue='SEVERITY',date_range=['2019-01-01','2019-12-01'])
-    
-
+   
      
     #subquery
     subquery_data=CrashStatAnalysis.subquery(df=CrashStatAnalysis.accident_info_df, query_flow=['SEVERITY','EVENT_TYPE'],top=10,filter_list=([['SEVERITY','Fatal accident'],['ROAD_GEOMETRY','Cross intersection']]))
     print(subquery_data)
 
-
-    subquery_data=CrashStatAnalysis.subquery(df=CrashStatAnalysis.accident_info_df,query_flow=['SEVERITY','SPEED_ZONE'], date_range=['2019-01-01','2019-12-01'],top=10)
-    print(subquery_data)
-
-    subquery_data=CrashStatAnalysis.subquery(df=CrashStatAnalysis.accident_info_df,                 query_flow=['SEVERITY','SPEED_ZONE'])
+    subquery_data=CrashStatAnalysis.subquery(df=CrashStatAnalysis.vehicle_info_df,query_flow = ['SEVERITY','ROAD_SURFACE_TYPE','SPEED_ZONE'], date_range=['2019-01-01','2019-12-01'], top=10)
     print(subquery_data)
     
-    subquery_data=CrashStatAnalysis.subquery(df=CrashStatAnalysis.accident_info_df,                 query_flow=['SEVERITY','SPEED_ZONE'],date_range=['2009-01-01','2020-01-01'],top=10)
+    subquery_data=CrashStatAnalysis.subquery(df=CrashStatAnalysis.person_info_df, query_flow=['INJ_LEVEL','SEX','AGE_GROUP'], date_range=['2019-01-01','2019-12-01'], top=10)
     print(subquery_data)
 
-    subquery_data=CrashStatAnalysis.subquery(df=CrashStatAnalysis.vehicle_info_df,                   query_flow=['SEVERITY','ROAD_SURFACE_TYPE','SPEED_ZONE'],date_range=['2019-01-01','2019-12-01'], top=10)
-    print(subquery_data)
-    
-    
-    subquery_data=CrashStatAnalysis.subquery(df=CrashStatAnalysis.person_info_df,                   query_flow=['INJ_LEVEL','SEX','AGE_GROUP'],date_range=['2019-01-01','2019-12-01'], top=10)
-    print(subquery_data)
-    
-    subquery_data=CrashStatAnalysis.subquery(df=CrashStatAnalysis.accident_info_df, query_flow=['SEVERITY','EVENT_TYPE'],top=10,filter_list=([['SEVERITY','Fatal accident'],['ROAD_GEOMETRY','Cross intersection']]),date_range=['2009-01-01','2020-01-01'])
-    print(subquery_data)
-    
-   
+
 
     #plot_map
     CrashStatAnalysis.plot_map(field_name='SEVERITY')
-    CrashStatAnalysis.plot_map(field_name='NO_PERSONS_KILLED')
     CrashStatAnalysis.plot_map(field_name='POLICE_ATTEND')
-    CrashStatAnalysis.plot_map(field_name='LIGHT_CONDITION')
     CrashStatAnalysis.plot_map(field_name='DATETIME_HOUR')
-    CrashStatAnalysis.plot_map(field_name='DATETIME_MONTH')
-    CrashStatAnalysis.plot_map(field_name='ATMOSPH_COND')
-    CrashStatAnalysis.plot_map(field_name='SURFACE_COND')
+
   
-   
+    #XGB
+    CrashStatAnalysis.xgb_classifier()
+    
     
  
+        
  
 
 
