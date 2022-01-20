@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 """
-main analysis script
+Main analysis script
+
 @author: akhilesh.koul
 """
 
@@ -148,7 +149,7 @@ class CrashStatAnalysis:
 
         
 
-    def eda_count_plot(self,df,field_name,date_range=None,hue=None,filter_list=None):
+    def eda_count_plot(self,df,field_name,date_range=None,hue=None,filter_list=None,order=False):
         """
         Function to perform EDA and plot count with hue information 
 
@@ -164,6 +165,9 @@ class CrashStatAnalysis:
             Field name to plot in addition to the field name.
         filter_list : LIST, optional
             List with key,value pair if filter needed to be done. e.g. ([['SEVERITY','Fatal accident'],['ROAD_GEOMETRY','Cross intersection']])
+         order : BOOL, optional
+            Plot count in decensing order or not. The default is False.
+            
 
         Returns
         -------
@@ -198,23 +202,37 @@ class CrashStatAnalysis:
             # fig, ax = plt.subplots(figsize=(15,8))
             fig, ax = plt.subplots()
     
-            sns.countplot(x=df_subset[field_name_desc],
-                        order=df_subset[field_name_desc].value_counts(ascending=False).index,
-                        hue=hue,
-                        data=df_subset,
-                        ax=ax)
+            if order == False:
+                sns.countplot(x=df_subset[field_name_desc],                          hue=hue, data=df_subset,ax=ax)
+                
+            
+            elif order == True:
+                 sns.countplot(x=df_subset[field_name_desc],
+                            order=df_subset[field_name_desc].value_counts(ascending=False).index, hue=hue,data=df_subset,ax=ax)
+                 
         else:
+            
+            
             # fig, ax = plt.subplots(figsize=(15,8))
             fig, ax = plt.subplots()
-            sns.countplot(x=df_subset[field_name],
-                             order=df_subset[field_name].value_counts(ascending=False).index,
-                             hue=hue,
-                             data=df_subset,
-                             ax=ax)
+            if order == False:
+                sns.countplot(x=df_subset[field_name],                          hue=hue, data=df_subset,ax=ax)
+            
+            elif order == True:
+                 sns.countplot(x=df_subset[field_name],
+                            order=df_subset[field_name].value_counts(ascending=False).index, hue=hue,data=df_subset,ax=ax)
         
         plt.xticks(rotation=90)
         if hue != None :
             plt.legend(bbox_to_anchor=(1.05, 1), loc=2, borderaxespad=0.)
+        
+        total = float(len(df_subset))
+        for p in ax.patches:
+            percentage = '{:.1f}%'.format(100 * p.get_height()/total)
+            x = p.get_x() + p.get_width()
+            y = p.get_height()
+            ax.annotate(percentage, (x, y),ha='right',rotation=90)
+         
         plt.show()
         
     def subquery(self,df,query_flow,date_range=None,top=None,filter_list=None):
@@ -325,6 +343,20 @@ if __name__ == '__main__':
     #initilization
     CrashStatAnalysis=CrashStatAnalysis(csv_path='data\\ACCIDENT_CLEANED',shp_file_path='data/SHP_FILE/nov21_vic_lga_polygon_shp/vic_lga.shp')
     
+    
+    
+    CrashStatAnalysis.eda_count_plot(df=CrashStatAnalysis.accident_info_df,field_name='SEVERITY',order=False,date_range=['2009-01-01','2020-01-01'])
+   
+   
+   
+    
+    CrashStatAnalysis.eda_count_plot(df=CrashStatAnalysis.accident_info_df,field_name='SEVERITY',hue='ROAD_GEOMETRY',order=False,date_range=['2009-01-01','2020-01-01'])
+    
+    CrashStatAnalysis.eda_count_plot(df=CrashStatAnalysis.accident_info_df,field_name='SEVERITY',hue='ATMOSPH_COND',order=False,date_range=['2009-01-01','2020-01-01'])
+    
+    CrashStatAnalysis.eda_count_plot(df=CrashStatAnalysis.accident_info_df,field_name='SEVERITY',hue='ATMOSPH_COND',filter_list=([['SEVERITY','Fatal accident']]),order=False,date_range=['2009-01-01','2020-01-01'])
+    
+    
     #eda count
     CrashStatAnalysis.eda_count_plot(df=CrashStatAnalysis.accident_info_df,field_name='SEVERITY')
     CrashStatAnalysis.eda_count_plot(df=CrashStatAnalysis.accident_info_df,field_name='SEVERITY',filter_list=([['SEVERITY','Fatal accident'],['ROAD_GEOMETRY','Cross intersection']]))
@@ -348,11 +380,11 @@ if __name__ == '__main__':
     CrashStatAnalysis.eda_count_plot(df=CrashStatAnalysis.accident_info_df,field_name='SURFACE_COND')
 
 
-    CrashStatAnalysis.eda_count_plot(df=CrashStatAnalysis.person_info_df,field_name='HELMET_BELT_WORN')
-    CrashStatAnalysis.eda_count_plot(df=CrashStatAnalysis.person_info_df,field_name='HELMET_BELT_WORN',hue='SEVERITY')
+    CrashStatAnalysis.eda_count_plot(df=CrashStatAnalysis.person_info_df,field_name='HELMET_BELT_WORN',date_range=['2019-01-01','2019-12-01'])
+    CrashStatAnalysis.eda_count_plot(df=CrashStatAnalysis.person_info_df,field_name='HELMET_BELT_WORN',hue='SEVERITY',date_range=['2019-01-01','2019-12-01'])
         
-    CrashStatAnalysis.eda_count_plot(df=CrashStatAnalysis.vehicle_info_df,field_name='ROAD_SURFACE_TYPE')
-    CrashStatAnalysis.eda_count_plot(df=CrashStatAnalysis.vehicle_info_df,field_name='ROAD_SURFACE_TYPE',hue='SEVERITY')
+    CrashStatAnalysis.eda_count_plot(df=CrashStatAnalysis.vehicle_info_df,field_name='ROAD_SURFACE_TYPE',date_range=['2019-01-01','2019-12-01'])
+    CrashStatAnalysis.eda_count_plot(df=CrashStatAnalysis.vehicle_info_df,field_name='ROAD_SURFACE_TYPE',hue='SEVERITY',date_range=['2019-01-01','2019-12-01'])
     
 
      
@@ -366,10 +398,21 @@ if __name__ == '__main__':
 
     subquery_data=CrashStatAnalysis.subquery(df=CrashStatAnalysis.accident_info_df,                 query_flow=['SEVERITY','SPEED_ZONE'])
     print(subquery_data)
-
-    subquery_data=CrashStatAnalysis.subquery(df=CrashStatAnalysis.vehicle_info_df,                   query_flow=['SEVERITY','ROAD_SURFACE_TYPE'],date_range=['2019-01-01','2019-12-01'], top=10)
+    
+    subquery_data=CrashStatAnalysis.subquery(df=CrashStatAnalysis.accident_info_df,                 query_flow=['SEVERITY','SPEED_ZONE'],date_range=['2009-01-01','2020-01-01'],top=10)
     print(subquery_data)
 
+    subquery_data=CrashStatAnalysis.subquery(df=CrashStatAnalysis.vehicle_info_df,                   query_flow=['SEVERITY','ROAD_SURFACE_TYPE','SPEED_ZONE'],date_range=['2019-01-01','2019-12-01'], top=10)
+    print(subquery_data)
+    
+    
+    subquery_data=CrashStatAnalysis.subquery(df=CrashStatAnalysis.person_info_df,                   query_flow=['INJ_LEVEL','SEX','AGE_GROUP'],date_range=['2019-01-01','2019-12-01'], top=10)
+    print(subquery_data)
+    
+    subquery_data=CrashStatAnalysis.subquery(df=CrashStatAnalysis.accident_info_df, query_flow=['SEVERITY','EVENT_TYPE'],top=10,filter_list=([['SEVERITY','Fatal accident'],['ROAD_GEOMETRY','Cross intersection']]),date_range=['2009-01-01','2020-01-01'])
+    print(subquery_data)
+    
+   
 
     #plot_map
     CrashStatAnalysis.plot_map(field_name='SEVERITY')
